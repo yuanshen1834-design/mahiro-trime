@@ -123,7 +123,7 @@ class AppPrefs(
         companion object {
             const val LANDSCAPE_MODE = "keyboard_landscape_mode"
             const val SPLIT_SPACE_PERCENT = "keyboard_split_space"
-            const val KEYBOARD_HEIGHT = "keyboard_height"
+            const val KEYBOARD_HEIGHT = "keyboard_height_screen_v2"
 
             const val USE_SOFT_CURSOR = "use_soft_cursor"
             const val HIDE_INPUT_BAR = "hide_input_bar"
@@ -184,9 +184,9 @@ class AppPrefs(
         val keyboardHeight = int(
             R.string.keyboard_height,
             KEYBOARD_HEIGHT,
-            100,
-            60,
-            150,
+            33,
+            25,
+            45,
             "%",
         )
 
@@ -492,3 +492,5 @@ class AppPrefs(
         }
     }
 }
+
+

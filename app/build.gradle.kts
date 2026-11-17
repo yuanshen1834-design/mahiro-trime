@@ -1,4 +1,4 @@
-﻿/*
+/*
  * SPDX-FileCopyrightText: 2015 - 2025 Rime community
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -27,6 +27,7 @@ android {
         versionCode = 20270101
         versionName = "3.3.14"
 
+
         multiDexEnabled = true
         buildConfigField("String", "BUILDER", "\"${project.builder}\"")
         buildConfigField("long", "BUILD_TIMESTAMP", project.buildTimestamp)
@@ -46,6 +47,15 @@ android {
         resValues = true
     }
 
+    signingConfigs {
+        create("mahiro") {
+            storeFile = file("G:/MahiroTrime/mahiro-release.jks")
+            storePassword = "mahiro123"
+            keyAlias = "mahiro"
+            keyPassword = "mahiro123"
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -54,15 +64,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
-            signingConfig =
-                project.signKeyFile?.let {
-                    signingConfigs.create("release") {
-                        storeFile = it
-                        storePassword = project.signKeyStorePwd
-                        keyAlias = project.signKeyAlias
-                        keyPassword = project.signKeyPwd
-                    }
-                }
+            signingConfig = signingConfigs.getByName("mahiro")
 
             resValue("string", "trime_app_name", "@string/app_name_release")
         }
@@ -179,4 +181,7 @@ configurations {
         exclude(group = "androidx.profileinstaller", module = "profileinstaller")
     }
 }
+
+
+
 

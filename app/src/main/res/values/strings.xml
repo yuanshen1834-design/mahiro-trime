@@ -7,8 +7,8 @@
 
 <resources xmlns:xliff="urn:oasis:names:en:xliff:document:1.2">
     <!-- Input Method Platform Tittle  -->
-    <string name="app_name_release">真寻拼音</string>
-    <string name="app_name_debug">真寻拼音 (Debug)</string>
+    <string name="app_name_release">真寻拼音输入法</string>
+    <string name="app_name_debug">真寻拼音输入法</string>
     <!-- Preference settings -->
     <string name="qq_group_1">Trime QQ group 1</string>
     <string name="qq_group_2">Trime QQ group 2</string>
@@ -151,7 +151,7 @@
     <string name="custom_sound_effect_enabled">Use custom key sound</string>
     <string name="enable_landscape_mode">Enable Landscape Mode</string>
     <string name="split_space_percent">Auto Split Keyboard Space Ratio</string>
-    <string name="keyboard_height">Keyboard height</string>
+    <string name="keyboard_height">Keyboard height (tap to adjust)</string>
     <string name="setup__step_three">Setup 3</string>
     <string name="setup__select_data_path_hint">Choose how <b>Trime</b> stores Rime data</string>
     <string name="setup__select_data_path">Select external data directory…</string>

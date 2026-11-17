@@ -1,4 +1,4 @@
-/*
+﻿/*
  * SPDX-FileCopyrightText: 2015 - 2025 Rime community
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -27,6 +27,12 @@ class AboutFragment : PaddingPreferenceFragment() {
         rootKey: String?,
     ) {
         preferenceScreen = preferenceManager.createPreferenceScreen(requireContext()).apply {
+            addPreference(Preference(requireContext()).apply {
+                isIconSpaceReserved = false
+                isCopyingEnabled = true
+                setTitle("真寻拼音输入法")
+                summary = "本项目由绪山真寻基于 Rime 输入法引擎（librime）与小狼毫（Weasel）开源项目进行二次开发（fork），采用 AGPL-3.0-or-later 与 Apache License 2.0 双许可证开源。"
+            })
             addPreference(R.string.current_version, Const.VERSION_NAME) {
                 startActivity(
                     Intent(
@@ -148,3 +154,4 @@ class AboutFragment : PaddingPreferenceFragment() {
         }
     }
 }
+

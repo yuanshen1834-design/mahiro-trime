@@ -251,5 +251,5 @@
     <string name="word_segment">分词</string>
     <string name="star_success">收藏成功</string>
     <string name="ignore_system_gesture_insets">忽略系统手势边衬区</string>
-    <string name="keyboard_height">键盘高度</string>
+    <string name="keyboard_height">键盘高度（屏占比，点按调节）</string>
 </resources>

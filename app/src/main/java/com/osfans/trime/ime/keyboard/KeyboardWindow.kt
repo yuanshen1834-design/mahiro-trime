@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2015 - 2024 Rime community
+﻿// SPDX-FileCopyrightText: 2015 - 2024 Rime community
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -6,6 +6,7 @@ package com.osfans.trime.ime.keyboard
 
 import android.graphics.Point
 import android.os.Build
+import android.view.WindowManager
 import android.text.InputType
 import android.view.View
 import android.view.WindowInsets
@@ -16,6 +17,7 @@ import com.osfans.trime.R
 import com.osfans.trime.core.RimeMessage
 import com.osfans.trime.core.SchemaItem
 import com.osfans.trime.daemon.RimeSession
+import com.osfans.trime.data.prefs.AppPrefs
 import com.osfans.trime.data.theme.Theme
 import com.osfans.trime.data.theme.model.TextKeyboard
 import com.osfans.trime.ime.broadcast.EnterKeyDisplayDelegate
@@ -195,7 +197,7 @@ class KeyboardWindow(di: DI) :
         }
 
         keyboard.also {
-            runBlocking { _currentKeyboardHeight.emit(it.keyboardHeight) }
+            runBlocking { _currentKeyboardHeight.emit(((if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) context.getSystemService(WindowManager::class.java).currentWindowMetrics.bounds.height() else context.resources.displayMetrics.heightPixels) * AppPrefs.defaultInstance().keyboard.keyboardHeight.getValue() / 100f).toInt()) }
             if (it.isLock) lastLockKeyboardId = target
             dispatchCapsState(it::setShifted)
 
@@ -455,3 +457,10 @@ class KeyboardWindow(di: DI) :
         currentKeyboardView?.onDetach()
     }
 }
+
+
+
+
+
+
+

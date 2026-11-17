@@ -1,4 +1,4 @@
-/*
+﻿/*
  * SPDX-FileCopyrightText: 2015 - 2025 Rime community
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -6,6 +6,8 @@
 package com.osfans.trime.ime.keyboard
 
 import android.annotation.SuppressLint
+import android.os.Build
+import android.view.WindowManager
 import android.content.Context
 import android.graphics.Canvas
 import android.widget.FrameLayout
@@ -38,10 +40,18 @@ class KeyboardView(
     internal val popupOnKeyPress by AppPrefs.defaultInstance().keyboard.popupOnKeyPress
     internal val keyboardHeightPercent by AppPrefs.defaultInstance().keyboard.keyboardHeight
     private val heightScale: Float
-        get() = keyboardHeightPercent / 100f
+        get() = (currentScreenHeight() * keyboardHeightPercent / 100f) / keyboard.height
     internal val hookShiftArrow: Boolean by AppPrefs.defaultInstance().keyboard.hookShiftArrow
     internal val hideKeySymbol: Boolean by AppPrefs.defaultInstance().keyboard.hideKeySymbol
     internal val hideKeyHint: Boolean by AppPrefs.defaultInstance().keyboard.hideKeyHint
+
+    private fun currentScreenHeight(): Int {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            context.getSystemService(WindowManager::class.java).currentWindowMetrics.bounds.height()
+        } else {
+            resources.displayMetrics.heightPixels
+        }
+    }
 
     init {
         setWillNotDraw(false)
@@ -107,3 +117,7 @@ class KeyboardView(
         popup.dismissAll()
     }
 }
+
+
+
+

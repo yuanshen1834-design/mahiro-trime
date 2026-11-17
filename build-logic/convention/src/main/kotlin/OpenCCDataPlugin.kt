@@ -1,4 +1,4 @@
-/*
+﻿/*
  * SPDX-FileCopyrightText: 2015 - 2025 Rime community
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
@@ -87,7 +87,7 @@ class OpenCCDataPlugin : Plugin<Project> {
             // Dicts referenced by OpenCC configs that cannot be generated at build time
             // (STPhrases_GeneratedFromRegionalPhrases needs a host opencc CLI).
             // Configs using them (s2t, s2tw, s2twp, s2hk, s2hkp) stay broken.
-            private val UNAVAILABLE_DICTS = setOf("STPhrases_GeneratedFromRegionalPhrases")
+            private val UNAVAILABLE_DICTS = setOf("STPhrases_GeneratedFromRegionalPhrases", "SealCharactersRev", "SealVariantsRev")
 
             // Regex to find "file": "xxx.ocd2" in config JSON
             private val OCD2_FILE_PATTERN = Pattern.compile("\"file\"\\s*:\\s*\"([^\"]+\\.ocd2)\"")
@@ -160,3 +160,4 @@ class OpenCCDataPlugin : Plugin<Project> {
         }
     }
 }
+
